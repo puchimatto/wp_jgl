@@ -1,0 +1,82 @@
+#esquelas_r {
+	width: 600px;
+}
+.esquela {
+	background-image: url("bg_esquela.jpg");
+	background-repeat: no-repeat;
+	height: 410px;
+	width: 295px;
+	margin: 5px 0 0 0;
+	float: left;
+	color: #fff;
+}
+.content-esquela {
+	font-family: Arial,Tahoma,Verdana;
+	margin: 0 auto;
+	padding: 20px;
+	position: relative;
+	text-align: center;
+	top: 60px;
+	width: 230px;
+}
+.image-cruz {
+	width: 55px;
+}
+.comunicado {
+	height: auto;
+}
+p.comunicado {
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+}
+h3.nombre  {
+ 	color: #fff;
+	text-align: center;
+	font-size: 24px;
+
+}
+
+p.lugar-fecha  {
+	color: #fff;
+	text-align: center;
+	font-size: 14px;
+}
+
+.info-esquela {
+	width: 490px;
+	height: 510px;
+	background-color:#262626 ;
+	color: #fff;
+
+}
+
+.content-info {
+	margin: 0 auto;
+	text-align: center;
+	padding: 10px 0;
+	width: 400px;
+font-family: Arial,Tahoma,Verdana;
+}
+.title-info {
+	font-size: 32px;
+}
+.text-info {
+	font-size: 20px;
+}
+.name-info {
+	font-size: 34px;
+}
+.fecha-info {
+	font-size: 20px;
+}
+.muestras {
+	font-size: 16px;
+}
+
+.detalles {
+	font-size: 11px;
+}
+.detalles-fecha {
+	font-size: 11px;
+}

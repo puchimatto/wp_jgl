@@ -1,0 +1,12 @@
+<?php
+	require("inc/common.php");
+	require("inc/home.php");
+	require("inc/obituaries.php");
+	require("inc/about.php");
+	require("inc/services.php");
+	require("inc/plans.php");
+	require("inc/maps.php");
+	require("inc/blog.php");
+	require("inc/contact.php");
+	require("inc/digital.php");
+?>
