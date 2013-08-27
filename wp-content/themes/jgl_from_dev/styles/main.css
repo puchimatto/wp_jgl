@@ -2871,7 +2871,9 @@ body.home #home-intro {
   height: 606px;
 }
 /* line 75, ../../app/styles/_home.scss */
-body.home #home-intro .carousel-controls,
+body.home #home-intro .carousel-controls{
+  display: none;
+}
 body.home #home-intro .carousel-text {
   position: absolute;
 }
