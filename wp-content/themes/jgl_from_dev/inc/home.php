@@ -24,7 +24,7 @@
                             $c++;
                             endforeach;
                         ?>
-                        <div class="video">
+                        <div id="youtubevideo" class="video">
                             <!-- YouTube video -->
                         
                             <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>
@@ -48,7 +48,7 @@
                             $c++;
                             endforeach;
                         ?>
-                        <div class="video">
+                        <div class="">
                         </div>
                     </div>
                     <div class="end">
