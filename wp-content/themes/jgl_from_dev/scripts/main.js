@@ -214,7 +214,7 @@ var SITE = {
 
   
                     setInterval(function() { 
-                             if(diapo < 3 ){diapo++;}else{diapo=0}
+                             if(diapo < 4 ){diapo++;}else{diapo=0}
                                      slideSwitch(diapo, true);
                     }, 7000);
 
@@ -2217,4 +2217,3 @@ UTIL = {
 
 // kick it all off here
 $(document).ready(UTIL.loadEvents);
-

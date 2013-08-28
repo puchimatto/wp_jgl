@@ -1,6 +1,7 @@
 ﻿<?php
     function home_intro(){
 ?>
+<div id="sticky">sticky</div>
     <section class="section-1 intro" id="home-intro" style="padding:0;">
                    <!-- Dimensions: 795×497px -->
                     <div class="carousel-controls"></div>

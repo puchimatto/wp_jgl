@@ -2781,7 +2781,19 @@ figure:after {
 
 /* Home page styles */
 /* line 10, ../../app/styles/_home.scss */
-body.home .content .container {
+
+body.home .content .container  {
+position: relative;
+} 
+body.home .content #sticky  {
+position: absolute;
+width: 65px;
+height: 173px;
+background: url(../images/sticky.png) ;
+right: -65px;
+top:870px;
+} 
+body.home .content .container section {
   overflow: hidden;
 }
 /* line 13, ../../app/styles/_home.scss */
@@ -2869,6 +2881,8 @@ body.home .content .end a.new {
 /* line 66, ../../app/styles/_home.scss */
 body.home #home-intro {
   height: 606px;
+min-height: 606px;
+background: url(../images/fondocarrusel.jpg);
 }
 /* line 75, ../../app/styles/_home.scss */
 body.home #home-intro .carousel-controls{
