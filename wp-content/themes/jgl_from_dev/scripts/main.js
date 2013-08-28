@@ -129,7 +129,6 @@ var SITE = {
     home: {
         init: function() {
             var onEnterTimer = 600;
-            var diapo = 0;
             //Acomodar elementos de sucursales
             $("#hidden-locations p.direccion-corta").each(function(a){
                 var lat = $(this).next().attr("data-gmap-lat"),
@@ -211,14 +210,6 @@ var SITE = {
                         controls.eq(dest).addClass("active");
                     //}
                 }
-
-  
-                    setInterval(function() { 
-                             if(diapo < 3 ){diapo++;}else{diapo=0}
-                                     slideSwitch(diapo, true);
-                    }, 7000);
-
-                  
 
                 controls.each(function(i,e){
                     $(this).bind("click",function(e){

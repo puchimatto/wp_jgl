@@ -1,0 +1,80 @@
+body{
+        	font-family: 'Trebuchet MS';
+        	line-height: 1.4;
+        	font-size: 12px;
+        }
+        .slide {
+		  width: 281px;
+		  height: 397px;
+		  background-color: #016a70;
+		  padding: 3px;
+		  margin-top: 10px;
+		}
+		.slide.middle {
+		  height: 421px !important;
+		  width: 297px;
+		  margin: 0;
+		}
+		.slide.middle h4 {
+		  background-color: #8fc4c6;
+		  text-align: center;
+		  line-height: 25px;
+		  text-transform: uppercase;
+		  font-size: 11px;
+		  margin: 14px 0 !important;
+		}
+		.slide.middle p + p {
+		  margin: 14px 0 !important;
+		}
+		.slide + .slide {
+		  margin-left: 14px;
+		}
+		.slide-content {
+		  width: 99%;
+		  height: 100%;
+		  border: 2px solid #99c2c6;
+		  background: url('../images/obituaries/little-logo.gif');
+		  background-repeat: no-repeat;
+		  background-position: center bottom;
+		  color: #fff;
+		}
+		.slide-content i.god {
+		  display: inline-block;
+		  width: 36px;
+		  height: 59px;
+		  float: right;
+		  background: url('../images/obituaries/god.gif');
+		  margin: 8px 19px;
+		}
+		.slide-content .desc {
+		  width: 230px;
+		  margin-top: 76px;
+		  margin-left: 26px;
+		  text-align: center;
+		}
+		.slide-content .desc p:first-child, .slide-content .desc h4 + p {
+		  font-size: 14px;
+		  line-height: 18px;
+		  margin: 0;
+		}
+		.slide-content .desc h4 {
+		  background-color: #8fc4c6;
+		  text-align: center;
+		  line-height: 25px;
+		  text-transform: uppercase;
+		  font-size: 11px;
+		  margin: 9px 0 !important;
+		}
+		.slide-content .desc p + p {
+		  margin: 7px 0;
+		}
+		.slide-content .empty {
+		  width: 230px;
+		  margin-left: 20px;
+		  text-align: center;
+		}
+		.slide-content .empty p {
+		  text-align: center;
+		  margin-top: 150px;
+		  font-size: 16px;
+		}

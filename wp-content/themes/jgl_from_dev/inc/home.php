@@ -86,7 +86,10 @@
                             ?>
                             <div class="item <?php if($c2 == 0) echo "active";?>">
                                 <a class="rotate">
-                                    
+                                    <div class="tb">
+                                        <div class="back"></div>
+                                        <img src="<?php echo $posts["url_img"][$c2]; ?>">
+                                    </div>
                                       <a href="quienes-somos/#<?php
                                         switch ($posts["id_post"][$c2] ) {
                                             case '26':
@@ -107,12 +110,7 @@
                                                 break;
                                         }
                                        
-                                     ?>">
-
-                                     <div class="tb">
-                                        <div class="back"></div>
-                                        <img src="<?php echo $posts["url_img"][$c2]; ?>">
-                                    </div><?php echo $posts["title"][$c2]; ?></a>
+                                     ?>"><?php echo $posts["title"][$c2]; ?></a>
                                 </a>
                             </div>
                             <?php
