@@ -213,17 +213,25 @@ var SITE = {
                     //}
                 }
 
+
                 var currentInterval,
                 diapo = 0;
                 
                 intervalo = function( move ){
-                    if ( move ) {
+                     if ( move ) {
                         currentInterval = setInterval(function() {
-                            if(diapo < 4) diapo++;
+                            if(diapo < panels.length-1) diapo++;
                             else diapo = 0;
                             slideSwitch(diapo, true);
+
                         }, 7000);
                     }else{
+                        clearInterval(currentInterval);
+                        currentInterval = setTimeout(function() {
+                           clearTimeout(currentInterval);
+                           intervalo( true ); 
+                        }, 10000); 
+
                         console.log("Detenido por 10seg");
                     }
                 }
@@ -263,7 +271,7 @@ var SITE = {
                         var hasClassActive = -1;
                         num = parent.find('div').length;
 
-                        //intervalo( false );
+                        intervalo( false );
 
                         parent.find('div').each(function(n){                            
                             if($(this).hasClass('active'))
@@ -286,7 +294,7 @@ var SITE = {
                         var hasClassActive = -1;
                         num = parent.find('div').length;
 
-                        //intervalo( false );
+                        intervalo( false );
 
                         parent.find('div').each(function(s){
                             if ($(this).hasClass('active'))

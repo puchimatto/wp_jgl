@@ -25,9 +25,42 @@
                             endforeach;
                         ?>
                         <div id="youtubevideo" class="video">
-                            <!-- YouTube video -->
+                            <!-- YouTube video <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>-->
                         
-                            <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>
+                            <img src="" data-yt="QW2AvuWRbfk">
+
+                            <div id="player"></div>
+
+                            <script>
+                              var tag = document.createElement('script');
+
+                              tag.src = "https://www.youtube.com/iframe_api";
+                              var firstScriptTag = document.getElementsByTagName('script')[0];
+                              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+                              var player;
+                              function onYouTubeIframeAPIReady() {
+                                player = new YT.Player('player', {
+                                  height: '497',
+                                  width: '795',
+                                  videoId: 'QW2AvuWRbfk',
+                                  events: {
+                                    'onReady': onPlayerReady,
+                                    'onStateChange': onPlayerStateChange
+                                  }
+                                });
+                              }
+
+                              function onPlayerReady(event) {
+                                event.target.playVideo();
+                              }
+
+                       
+                               function onPlayerStateChange(event) {
+                                
+                              }
+                              
+                            </script>
                         </div>
                         
                     </div>
