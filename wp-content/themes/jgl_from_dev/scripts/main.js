@@ -129,8 +129,6 @@ var SITE = {
     home: {
         init: function() {
             var onEnterTimer = 600;
-            var diapo = 0;
-            var movimiento = 1;
 
             //Acomodar elementos de sucursales
             $("#hidden-locations p.direccion-corta").each(function(a){
@@ -215,44 +213,39 @@ var SITE = {
                     //}
                 }
 
-                function intervalo_inactivo(){
-                     
-                }
-                var intervalo_uno, intervalo_dos;
-
-                intervalo = function( movimiento ){
-
-                    if ( movimiento ) {
-                            intervalo_auto();
-                                               
+                var currentInterval,
+                diapo = 0;
+                
+                intervalo = function( move ){
+                    if ( move ) {
+                        currentInterval = setInterval(function() {
+                            if(diapo < 4) diapo++;
+                            else diapo = 0;
+                            slideSwitch(diapo, true);
+                        }, 7000);
                     }else{
                         console.log("Detenido por 10seg");
-
-                        clearInterval(intervalo_uno);
-                        intervalo_dos = setInterval(function() { 
-                            intervalo_auto();
-                        },10000);
-                    }; 
+                    }
                 }
-                
+                /*
                 intervalo_auto = function(){
                     console.log("Moviendo slide");
-
                     clearInterval(intervalo_dos);
                     intervalo_uno = setInterval(function() { 
                         if(diapo < 4 ){diapo++;}else{diapo=0}
                         slideSwitch(diapo, true);
                     }, 7000); 
                 }
-
+                */
                 intervalo( true );
-
-                 $("#youtubevideo").click(function(){
+                /*
+                var youtube = $("#youtubevideo");
+                 youtube.click(function(){
                     intervalo(false);
                     console.log("STOP!");
 
                  });
-
+                */
                 controls.each(function(i,e){
                     $(this).bind("click",function(e){
                         if((controls.length - 1) == i ) $(".carousel-text").first().hide();
@@ -265,10 +258,13 @@ var SITE = {
                 $(".arrow-carousel").each(function(k){
                     var parent = $(this).next();
                     var dot = $(this).parent();
+
                     $(this).find('.prev-arrow').click(function(m){
                         var hasClassActive = -1;
                         num = parent.find('div').length;
-                        intervalo( false );
+
+                        //intervalo( false );
+
                         parent.find('div').each(function(n){                            
                             if($(this).hasClass('active'))
                                 hasClassActive = n;
@@ -289,7 +285,8 @@ var SITE = {
                     $(this).find('.next-arrow').click(function(q){
                         var hasClassActive = -1;
                         num = parent.find('div').length;
-                        intervalo( false );
+
+                        //intervalo( false );
 
                         parent.find('div').each(function(s){
                             if ($(this).hasClass('active'))
