@@ -2301,11 +2301,10 @@ html {
 body {
   margin: 0 auto;
   /*background-color:#f5f1f0;*/
-  background-image: url('../images/header/JGL_HOME_FONDO.jpg');
+  background-image: url('../images/header/header02.png');
   font-family: "Georgia"; /*se cambia de Trebuchet MS", Tahoma, sans-serif a Georgia*/
   font-size: 12px; 
-  /*background-size: cover;*/
-  position: relative;
+  background-size: cover;
 }
 
 /* line 20, ../../app/styles/_global.scss */
@@ -2494,9 +2493,9 @@ figure:after {
 /* Header styles */
 /* line 20, ../../app/styles/_header.scss */
 .site-header {
-  /*background-color: #e1d9ce;*/
-  /*background-image: url('../images/header/header03.png');*/
-  /*background-position: 0;*/
+  background-color: #e1d9ce;
+  background-image: url('../images/header/header02.png');
+  background-position: 0;
   background-repeat: no-repeat;
   color: #212f60;
   height: 300px;
@@ -2504,7 +2503,7 @@ figure:after {
   font-size: 0.9em;
   margin-bottom: -141px;
   z-index: 0;
-  /*background-size: cover;*/
+  background-size: cover;
   margin-top:-1%;
 }
 /* line 36, ../../app/styles/_header.scss */
@@ -2621,15 +2620,15 @@ figure:after {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top:-5.5%;
+  margin-top:-3.5%;
   width: 300px;
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-  background-image: url('../images/header/logo-nuevo03.png');
+  background-image: url('../images/header/logo-nuevo01.png');
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 144px;
+  height: 125px;
   position: relative;
   top: 50px;
 }
@@ -2637,7 +2636,7 @@ figure:after {
 /* line 116, ../../app/styles/_header.scss */
 .site-nav {
   position: absolute;
-  /*top: 159px;*/
+  top: 159px;
   left: 0;
   width: 100%;
   z-index: 105;
@@ -2740,7 +2739,8 @@ figure:after {
 }
 /* line 212, ../../app/styles/_header.scss */
 .site-nav .search {
-  /*padding: 8px;*/
+   padding-left: 5px;
+padding-top: 8px;
 }
 /* line 215, ../../app/styles/_header.scss */
 .site-nav .search label {
@@ -2782,7 +2782,29 @@ figure:after {
 
 /* Home page styles */
 /* line 10, ../../app/styles/_home.scss */
-body.home .content .container {
+
+body.home .content .container  {
+position: relative;
+} 
+body.home .content #sticky-note-addr  {
+display:none;
+width: 65px;
+height: 173px;
+background: url(../images/sticky.png);
+position: absolute;
+top: 90px;
+right: -65px;
+} 
+body.home .content #sticky-note-addr.sticky{
+position: fixed;
+top:90px;
+right:inherit;
+margin-left: 960px;
+}
+body.home .content #sticky-note-addr > span  {
+display:hidden;
+}
+body.home .content .container section {
   overflow: hidden;
 }
 /* line 13, ../../app/styles/_home.scss */
@@ -2870,9 +2892,13 @@ body.home .content .end a.new {
 /* line 66, ../../app/styles/_home.scss */
 body.home #home-intro {
   height: 606px;
+min-height: 606px;
+background: url(../images/fondocarrusel.jpg);
 }
 /* line 75, ../../app/styles/_home.scss */
-body.home #home-intro .carousel-controls,
+body.home #home-intro .carousel-controls{
+  display: none;
+}
 body.home #home-intro .carousel-text {
   position: absolute;
 }
@@ -4191,7 +4217,7 @@ body.about #about-values .item h3 {
 /* line 111, ../../app/styles/_about.scss */
 body.about #about-values .item p {
   padding: 0 10px;
-  /*display: none;*/
+  display: none;
 }
 /* line 115, ../../app/styles/_about.scss */
 body.about #about-values .item .bullet {

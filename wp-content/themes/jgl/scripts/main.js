@@ -33,6 +33,34 @@ var SITE = {
                     $(".site-nav").removeClass("sticky");
                 }
             });
+            
+            // Sticky note
+            var stkntmin = 0;
+            if( $("body").hasClass("home") ) {
+                stkntmin = $("#home-about").position().top;
+            } else {
+                $("#sticky-note-addr").show();
+                stkntmin = $(".site-nav").offset().top;
+            }
+            $("body").scrollspy({
+                min:        stkntmin,
+                max:        $("body").height(),
+                onEnter:    function(e,p) {
+                    if( $("body").hasClass("home") ) {
+                        $("#sticky-note-addr").addClass("sticky").fadeIn();
+                    } else {
+                        $("#sticky-note-addr").addClass("sticky");
+                    }
+                },
+                onLeave:    function(e,p) {
+                    if( $("body").hasClass("home") ) {
+                        $("#sticky-note-addr").removeClass("sticky").hide();
+                    } else {
+                        $("#sticky-note-addr").removeClass("sticky");
+                    }
+                }
+            });
+            
             $("ul.main li a").hover(function(){
                 window.fadeInMenu = function(_this){
                     $(_this).next().stop().fadeIn(800);
@@ -129,6 +157,7 @@ var SITE = {
     home: {
         init: function() {
             var onEnterTimer = 600;
+
             //Acomodar elementos de sucursales
             $("#hidden-locations p.direccion-corta").each(function(a){
                 var lat = $(this).next().attr("data-gmap-lat"),
@@ -145,16 +174,18 @@ var SITE = {
 
             // Initial carousel
             (function($){
-                var panels = $("#home-intro .carousel-bg div"),
-                    textPanels = $("#home-intro .carousel-text div"),
+                var panels = $("#home-intro .carousel-bg > div"),
+                    textPanels = $("#home-intro .carousel-text > div"),
                     controlDiv = $("#home-intro .carousel-controls"),
                     controls,
                     notPanels,
                     notTextPanels,
                     slideSwitch,
                     textSwitch,
-                    controlLink = $("<a>");
-
+                    currentInterval;
+                   
+                controlLink = $("<a>");
+                
                 panels.each(function(i,e){
                     controlLink.clone().appendTo(controlDiv);
                 });
@@ -163,6 +194,25 @@ var SITE = {
 
                 notPanels = panels.not(".active");
                 notTextPanels = textPanels.not(".active");
+                
+                YTPlayer = function(){
+                    console.log($('#yt-image').data('yt'));
+                    /*
+                    var player = new YT.Player('player', {
+                        height: '497',
+                        width: '795',
+                        videoId: $('yt-image').data('yt'),
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+                    function onPlayerReady(event) {
+                        //event.target.playVideo();
+                    }
+                    function onPlayerStateChange(event) {}
+                    */
+                }
 
                 slideSwitch = function(dest) {
 
@@ -210,23 +260,62 @@ var SITE = {
                         controls.eq(dest).addClass("active");
                     //}
                 }
+                
+                intervalo = function( move ){
+                    var parent = $('div.carousel-bg');
+                    var dot = $('section#home-intro');
 
+                    var hasClassActive = -1;
+                    num = parent.children('div').length - 1;
+                    
+                    if ( move ) {
+                        currentInterval = setInterval(function() {
+                            parent.children('div').each(function(s){
+                                if ($(this).hasClass('active'))
+                                    hasClassActive = s;
+                            });
+                            dot.find('a').removeClass('active');
+
+                            if(num == hasClassActive){
+                                dot.find('a').eq(0).addClass('active');  
+                                slideSwitch(0, true);
+                            } else {
+                                dot.find('a').eq(hasClassActive+1).addClass('active');                        
+                                slideSwitch(hasClassActive+1, true);
+                            }
+                        }, 7000);
+                    }else{
+                        clearInterval(currentInterval);
+                        currentInterval = setTimeout(function() {
+                           clearTimeout(currentInterval);
+                           intervalo( true ); 
+                        }, 20000);
+                    }
+                }
+                
+                YTPlayer();
+                intervalo( true );
+                
                 controls.each(function(i,e){
                     $(this).bind("click",function(e){
                         if((controls.length - 1) == i ) $(".carousel-text").first().hide();
                         else $(".carousel-text").first().show();
                         slideSwitch(i, true);
+
                     });
                 });
 
                 $(".arrow-carousel").each(function(k){
                     var parent = $(this).next();
                     var dot = $(this).parent();
+                    
                     $(this).find('.prev-arrow').click(function(m){
                         var hasClassActive = -1;
-                        num = parent.find('div').length;
-                        
-                        parent.find('div').each(function(n){                            
+                        num = parent.children('div').length - 1;
+
+                        intervalo( false );
+
+                        parent.children('div').each(function(n){                            
                             if($(this).hasClass('active'))
                                 hasClassActive = n;
                         });    
@@ -245,9 +334,11 @@ var SITE = {
                     });
                     $(this).find('.next-arrow').click(function(q){
                         var hasClassActive = -1;
-                        num = parent.find('div').length;
+                        num = parent.children('div').length - 1;
+                        
+                        intervalo( false );
 
-                        parent.find('div').each(function(s){
+                        parent.children('div').each(function(s){
                             if ($(this).hasClass('active'))
                                 hasClassActive = s;
                         });
@@ -359,7 +450,7 @@ var SITE = {
             });
 
                 */
-
+ 
             })(jQuery);
 
             // Section 2 carousel
@@ -911,7 +1002,7 @@ var SITE = {
                 $("#about-campaigns .details").eq(i).prepend(p[i]);
             };
             // S3 floating dandelion seed
-            /*(function(w,$){
+            (function(w,$){
                 var seed = $("<div>",{"class":"seed"});
                 $("#about-values .cells").append(seed);
 
@@ -932,7 +1023,7 @@ var SITE = {
                 });
 
                 $("#about-values .item.honesty").trigger("mouseenter");
-            })(window,jQuery); */
+            })(window,jQuery);
 
             // S4 Lightbox
             var s4FancyboxOpts = {
@@ -1150,7 +1241,7 @@ var SITE = {
                 getTestimonials( today.getFullYear(), today.getMonth() + 1 );
 
             })(jQuery);*/
-            /*$("#about-values .item h3").click(function(){
+            $("#about-values .item h3").click(function(){
                 if($(this).next().css('display') == 'none'){
                     $(this).next().css('display', 'block');
                     $(this).find(".bullet").first().removeClass('change');
@@ -1159,7 +1250,7 @@ var SITE = {
                     $(this).next().css('display','none');
                     $(this).find(".bullet").first().addClass('change');
                 }
-            });*/
+            });
             $("#write").click(function(a){
                 a.preventDefault();
                 if(!$("#about-testimonials").hasClass("show-form")){
@@ -2075,7 +2166,7 @@ var SITE = {
             });
             $(document).on("click", ".move", function(e){
                 var category = $(this).attr('data-category');
-                console.log(category);
+                
 
                 var year = $(this).attr("data-year");
                 $.ajax({
@@ -2208,4 +2299,3 @@ UTIL = {
 
 // kick it all off here
 $(document).ready(UTIL.loadEvents);
-

@@ -33,6 +33,34 @@ var SITE = {
                     $(".site-nav").removeClass("sticky");
                 }
             });
+            
+            // Sticky note
+            var stkntmin = 0;
+            if( $("body").hasClass("home") ) {
+                stkntmin = $("#home-about").position().top;
+            } else {
+                $("#sticky-note-addr").show();
+                stkntmin = $(".site-nav").offset().top;
+            }
+            $("body").scrollspy({
+                min:        stkntmin,
+                max:        $("body").height(),
+                onEnter:    function(e,p) {
+                    if( $("body").hasClass("home") ) {
+                        $("#sticky-note-addr").addClass("sticky").fadeIn();
+                    } else {
+                        $("#sticky-note-addr").addClass("sticky");
+                    }
+                },
+                onLeave:    function(e,p) {
+                    if( $("body").hasClass("home") ) {
+                        $("#sticky-note-addr").removeClass("sticky").hide();
+                    } else {
+                        $("#sticky-note-addr").removeClass("sticky");
+                    }
+                }
+            });
+            
             $("ul.main li a").hover(function(){
                 window.fadeInMenu = function(_this){
                     $(_this).next().stop().fadeIn(800);
@@ -146,17 +174,18 @@ var SITE = {
 
             // Initial carousel
             (function($){
-                var panels = $("#home-intro .carousel-bg div"),
-                    textPanels = $("#home-intro .carousel-text div"),
+                var panels = $("#home-intro .carousel-bg > div"),
+                    textPanels = $("#home-intro .carousel-text > div"),
                     controlDiv = $("#home-intro .carousel-controls"),
                     controls,
                     notPanels,
                     notTextPanels,
                     slideSwitch,
                     textSwitch,
+                    currentInterval;
                    
-                    controlLink = $("<a>");
-
+                controlLink = $("<a>");
+                
                 panels.each(function(i,e){
                     controlLink.clone().appendTo(controlDiv);
                 });
@@ -165,6 +194,25 @@ var SITE = {
 
                 notPanels = panels.not(".active");
                 notTextPanels = textPanels.not(".active");
+                
+                YTPlayer = function(){
+                    console.log($('#yt-image').data('yt'));
+                    /*
+                    var player = new YT.Player('player', {
+                        height: '497',
+                        width: '795',
+                        videoId: $('yt-image').data('yt'),
+                        events: {
+                            'onReady': onPlayerReady,
+                            'onStateChange': onPlayerStateChange
+                        }
+                    });
+                    function onPlayerReady(event) {
+                        //event.target.playVideo();
+                    }
+                    function onPlayerStateChange(event) {}
+                    */
+                }
 
                 slideSwitch = function(dest) {
 
@@ -212,48 +260,42 @@ var SITE = {
                         controls.eq(dest).addClass("active");
                     //}
                 }
-
-
-                var currentInterval,
-                diapo = 0;
                 
                 intervalo = function( move ){
-                     if ( move ) {
-                        currentInterval = setInterval(function() {
-                            if(diapo < panels.length-1) diapo++;
-                            else diapo = 0;
-                            slideSwitch(diapo, true);
+                    var parent = $('div.carousel-bg');
+                    var dot = $('section#home-intro');
 
+                    var hasClassActive = -1;
+                    num = parent.children('div').length - 1;
+                    
+                    if ( move ) {
+                        currentInterval = setInterval(function() {
+                            parent.children('div').each(function(s){
+                                if ($(this).hasClass('active'))
+                                    hasClassActive = s;
+                            });
+                            dot.find('a').removeClass('active');
+
+                            if(num == hasClassActive){
+                                dot.find('a').eq(0).addClass('active');  
+                                slideSwitch(0, true);
+                            } else {
+                                dot.find('a').eq(hasClassActive+1).addClass('active');                        
+                                slideSwitch(hasClassActive+1, true);
+                            }
                         }, 7000);
                     }else{
                         clearInterval(currentInterval);
                         currentInterval = setTimeout(function() {
                            clearTimeout(currentInterval);
                            intervalo( true ); 
-                        }, 10000); 
-
-                        console.log("Detenido por 10seg");
+                        }, 20000);
                     }
                 }
-                /*
-                intervalo_auto = function(){
-                    console.log("Moviendo slide");
-                    clearInterval(intervalo_dos);
-                    intervalo_uno = setInterval(function() { 
-                        if(diapo < 4 ){diapo++;}else{diapo=0}
-                        slideSwitch(diapo, true);
-                    }, 7000); 
-                }
-                */
+                
+                YTPlayer();
                 intervalo( true );
-                /*
-                var youtube = $("#youtubevideo");
-                 youtube.click(function(){
-                    intervalo(false);
-                    console.log("STOP!");
-
-                 });
-                */
+                
                 controls.each(function(i,e){
                     $(this).bind("click",function(e){
                         if((controls.length - 1) == i ) $(".carousel-text").first().hide();
@@ -266,14 +308,14 @@ var SITE = {
                 $(".arrow-carousel").each(function(k){
                     var parent = $(this).next();
                     var dot = $(this).parent();
-
+                    
                     $(this).find('.prev-arrow').click(function(m){
                         var hasClassActive = -1;
-                        num = parent.find('div').length;
+                        num = parent.children('div').length - 1;
 
                         intervalo( false );
 
-                        parent.find('div').each(function(n){                            
+                        parent.children('div').each(function(n){                            
                             if($(this).hasClass('active'))
                                 hasClassActive = n;
                         });    
@@ -292,11 +334,11 @@ var SITE = {
                     });
                     $(this).find('.next-arrow').click(function(q){
                         var hasClassActive = -1;
-                        num = parent.find('div').length;
-
+                        num = parent.children('div').length - 1;
+                        
                         intervalo( false );
 
-                        parent.find('div').each(function(s){
+                        parent.children('div').each(function(s){
                             if ($(this).hasClass('active'))
                                 hasClassActive = s;
                         });

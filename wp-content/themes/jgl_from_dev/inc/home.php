@@ -1,93 +1,58 @@
-﻿<?php
+<?php
     function home_intro(){
 ?>
-<div id="sticky">sticky</div>
+    <div id="sticky-note-addr"></div>
     <section class="section-1 intro" id="home-intro" style="padding:0;">
-                   <!-- Dimensions: 795×497px -->
-                    <div class="carousel-controls"></div>
-                    <div class="arrow-carousel">
-                        <a class="prev-arrow"></a>
-                        <a class="next-arrow"></a>                            
-                    </div>                    
-                    <div class="carousel-bg">
-                        <?php
-                            global $post;
-                            $id_type = get_cat_ID('Carousel');
-                            $array_category = array($id_type);
-                            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
-                            $myposts = get_posts( $args );
-                            $c = 0;
-                            foreach( $myposts as $post ) :  setup_postdata($post); 
-                        ?>
-                        <div <?php if($c == 0): ?>class="active"<?php endif; ?>><img src="<?php uniq_img(get_the_ID()); ?>" data-src="holder.js/940x563"  width="960" height="563"></div>
-                        <?php
-                            $c++;
-                            endforeach;
-                        ?>
-                        <div id="youtubevideo" class="video">
-                            <!-- YouTube video <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>-->
-                        
-                            <img src="" data-yt="QW2AvuWRbfk">
-
-                            <div id="player"></div>
-
-                            <script>
-                              var tag = document.createElement('script');
-
-                              tag.src = "https://www.youtube.com/iframe_api";
-                              var firstScriptTag = document.getElementsByTagName('script')[0];
-                              firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-                              var player;
-                              function onYouTubeIframeAPIReady() {
-                                player = new YT.Player('player', {
-                                  height: '497',
-                                  width: '795',
-                                  videoId: 'QW2AvuWRbfk',
-                                  events: {
-                                    'onReady': onPlayerReady,
-                                    'onStateChange': onPlayerStateChange
-                                  }
-                                });
-                              }
-
-                              function onPlayerReady(event) {
-                                event.target.playVideo();
-                              }
-
-                       
-                               function onPlayerStateChange(event) {
-                                
-                              }
-                              
-                            </script>
-                        </div>
-                        
-                    </div>
-                    <div class="carousel-text">
-                        <?php
-                            global $post;
-                            $id_type = get_cat_ID('Carousel');
-                            $array_category = array($id_type);
-                            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
-                            $myposts = get_posts( $args );
-                            $c = 0;
-                            foreach( $myposts as $post ) :  setup_postdata($post); 
-                        ?>
-                        <div <?php if($c == 0): ?>class="active"<?php endif; ?>>
-                            <?php the_content(); ?>
-                        </div>
-                        <?php
-                            $c++;
-                            endforeach;
-                        ?>
-                        <div class="">
-                        </div>
-                    </div>
-                    <div class="end">
-                        <a href="#home-intro" class="new"></a>
-                    </div>
-                </section>
+        <!-- Dimensions: 795×497px -->
+        <div class="carousel-controls"></div>
+        <div class="arrow-carousel">
+            <a class="prev-arrow"></a>
+            <a class="next-arrow"></a>                            
+        </div>                    
+        <div class="carousel-bg">
+            <?php
+            global $post;
+            $id_type = get_cat_ID('Carousel');
+            $array_category = array($id_type);
+            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
+            $myposts = get_posts( $args );
+            $c = 0;
+            foreach( $myposts as $post ) :  setup_postdata($post); 
+            ?>
+            <div <?php if($c == 0): ?>class="active"<?php endif; ?>><img src="<?php uniq_img(get_the_ID()); ?>" data-src="holder.js/940x563"  width="960" height="563"></div>
+            <?php
+            $c++;
+            endforeach;
+            ?>
+            <div id="youtubevideo" class="video">
+                <!-- YouTube video <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>-->
+                <img id="yt-image" src="http://img.youtube.com/vi/QW2AvuWRbfk/mqdefault.jpg" data-yt="QW2AvuWRbfk" />
+                <!-- <div id="player"></div> -->
+            </div>
+        </div>
+        <div class="carousel-text">
+            <?php
+            global $post;
+            $id_type = get_cat_ID('Carousel');
+            $array_category = array($id_type);
+            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
+            $myposts = get_posts( $args );
+            $c = 0;
+            foreach( $myposts as $post ) :  setup_postdata($post); 
+            ?>
+            <div <?php if($c == 0): ?>class="active"<?php endif; ?>>
+                <?php the_content(); ?>
+            </div>
+            <?php
+            $c++;
+            endforeach;
+            ?>
+            <div class=""></div>
+        </div>
+        <div class="end">
+            <a href="#home-intro" class="new"></a>
+        </div>
+    </section>
 <?php
     }
     function home_about(){

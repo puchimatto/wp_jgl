@@ -15,6 +15,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/styles/main.css">
+        <script src="https://www.youtube.com/iframe_api"></script>
         <script src="<?php bloginfo('template_url'); ?>/scripts/vendor/modernizr.min.js"></script>
         <script type="text/javascript"> var homeURL = "<?php echo hurl(); ?>"; </script>
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/styles/jquery/jquery-ui.css">

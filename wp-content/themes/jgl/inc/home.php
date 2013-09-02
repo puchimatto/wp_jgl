@@ -1,59 +1,58 @@
 <?php
     function home_intro(){
 ?>
+    <div id="sticky-note-addr"></div>
     <section class="section-1 intro" id="home-intro" style="padding:0;">
-                   <!-- Dimensions: 795×497px -->
-                    <div class="carousel-controls"></div>
-                    <div class="arrow-carousel">
-                        <a class="prev-arrow"></a>
-                        <a class="next-arrow"></a>                            
-                    </div>                    
-                    <div class="carousel-bg">
-                        <?php
-                            global $post;
-                            $id_type = get_cat_ID('Carousel');
-                            $array_category = array($id_type);
-                            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
-                            $myposts = get_posts( $args );
-                            $c = 0;
-                            foreach( $myposts as $post ) :  setup_postdata($post); 
-                        ?>
-                        <div <?php if($c == 0): ?>class="active"<?php endif; ?>><img src="<?php uniq_img(get_the_ID()); ?>" data-src="holder.js/940x563"  width="960" height="563"></div>
-                        <?php
-                            $c++;
-                            endforeach;
-                        ?>
-                        <div class="video">
-                            <!-- YouTube video -->
-                        
-                            <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        
-                    </div>
-                    <div class="carousel-text">
-                        <?php
-                            global $post;
-                            $id_type = get_cat_ID('Carousel');
-                            $array_category = array($id_type);
-                            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
-                            $myposts = get_posts( $args );
-                            $c = 0;
-                            foreach( $myposts as $post ) :  setup_postdata($post); 
-                        ?>
-                        <div <?php if($c == 0): ?>class="active"<?php endif; ?>>
-                            <?php the_content(); ?>
-                        </div>
-                        <?php
-                            $c++;
-                            endforeach;
-                        ?>
-                        <div class="video">
-                        </div>
-                    </div>
-                    <div class="end">
-                        <a href="#home-about" class="new"></a>
-                    </div>
-                </section>
+        <!-- Dimensions: 795×497px -->
+        <div class="carousel-controls"></div>
+        <div class="arrow-carousel">
+            <a class="prev-arrow"></a>
+            <a class="next-arrow"></a>                            
+        </div>                    
+        <div class="carousel-bg">
+            <?php
+            global $post;
+            $id_type = get_cat_ID('Carousel');
+            $array_category = array($id_type);
+            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
+            $myposts = get_posts( $args );
+            $c = 0;
+            foreach( $myposts as $post ) :  setup_postdata($post); 
+            ?>
+            <div <?php if($c == 0): ?>class="active"<?php endif; ?>><img src="<?php uniq_img(get_the_ID()); ?>" data-src="holder.js/940x563"  width="960" height="563"></div>
+            <?php
+            $c++;
+            endforeach;
+            ?>
+            <div id="youtubevideo" class="video">
+                <!-- YouTube video <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>-->
+                <img id="yt-image" src="http://img.youtube.com/vi/QW2AvuWRbfk/mqdefault.jpg" data-yt="QW2AvuWRbfk" />
+                <!-- <div id="player"></div> -->
+            </div>
+        </div>
+        <div class="carousel-text">
+            <?php
+            global $post;
+            $id_type = get_cat_ID('Carousel');
+            $array_category = array($id_type);
+            $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
+            $myposts = get_posts( $args );
+            $c = 0;
+            foreach( $myposts as $post ) :  setup_postdata($post); 
+            ?>
+            <div <?php if($c == 0): ?>class="active"<?php endif; ?>>
+                <?php the_content(); ?>
+            </div>
+            <?php
+            $c++;
+            endforeach;
+            ?>
+            <div class=""></div>
+        </div>
+        <div class="end">
+            <a href="#home-intro" class="new"></a>
+        </div>
+    </section>
 <?php
     }
     function home_about(){
@@ -78,7 +77,7 @@
                         }
                     ?>
                     <h2>¿Quiénes somos?</h2>
-                    <h3>Una funeraria humana, cálida y cercana</h3>
+                    <h3>Una historia de servicio</h3>
                     <div class="carousel-rotate">
                         <div class="stage" data-d="<?php echo $c; ?>">
                             <?php
@@ -86,10 +85,7 @@
                             ?>
                             <div class="item <?php if($c2 == 0) echo "active";?>">
                                 <a class="rotate">
-                                    <div class="tb">
-                                        <div class="back"></div>
-                                        <img src="<?php echo $posts["url_img"][$c2]; ?>">
-                                    </div>
+                                    
                                       <a href="quienes-somos/#<?php
                                         switch ($posts["id_post"][$c2] ) {
                                             case '26':
@@ -110,7 +106,12 @@
                                                 break;
                                         }
                                        
-                                     ?>"><?php echo $posts["title"][$c2]; ?></a>
+                                     ?>">
+
+                                     <div class="tb">
+                                        <div class="back"></div>
+                                        <img src="<?php echo $posts["url_img"][$c2]; ?>">
+                                    </div><?php echo $posts["title"][$c2]; ?></a>
                                 </a>
                             </div>
                             <?php
@@ -150,7 +151,7 @@
                         ?>
                     </div>
                     <div class="end">
-                        <a href="#home-services" class="new"></a>
+                        <a href="#home-about" class="new"></a>
                     </div>
 
                     <!-- DESACTIVADO -->
@@ -167,7 +168,7 @@
                 <section class="section-3 services" id="home-services">
                     <!-- Services, each square flies into the centre -->
                     <h2>Nuestros servicios</h2>
-                    <h3>Ponemos a sus órdenes nuestros servicios para ayudarle</h3>
+                    <h3>Ponemos a tus órdenes nuestros servicios para ayudarte en momentos</h3>
                     <div class="cells">
                         <ul>
                             <li class="nw">
@@ -249,7 +250,7 @@
                     </div>
 
                     <div class="end">
-                        <a href="#home-plans" class="new"></a>
+                        <a href="#about-services" class="new"></a>
                     </div>
                     <!--<div class="end">
                         <a href="#home-services"><i class="icon-chevron-up"></i></a>
@@ -267,7 +268,7 @@
                 <section class="section-4 plans" id="home-plans">
                     <!-- Plans, center fades in first -->
                     <h2>Planes a futuro</h2>
-                    <h3>Ponemos a sus órdenes nuestros servicios para ayudarle</h3>
+                    <h3>Ponemos a tus órdenes nuestros servicios para ayudarte desde la primera llamada</h3>
                     <div class="pages">
                         <article class="main plan-total-40">
                             <div class="frame">
@@ -290,39 +291,38 @@
                         </article>
                     </div>
                     <div class="contact">
-                        <h4>Plan a su medida</h4>
+                        <h4>Plan a tu medida</h4>
                         <?php
                             $n1 = rand(1,10);
                             $n2 = rand(1,10);
                         ?>
                         <form id="planes" data-sum="<?php printf("¿Cuánto es %s + %s?", $n1, $n2); ?>">
-                            <p>Contacte a un asesor para obtener una cotización a su medida</p>
-                            <input type="text" placeholder="Su nombre" name="name" id="name-plan" required>
-                            <input type="mail" placeholder="Su e-mail" name="email" id="email-plan" required>
+                            <p>Contacta a un asesor para obtener una cotización a tu medida</p>
+                            <input type="text" placeholder="Tu nombre" name="name" id="name-plan" required>
+                            <input type="mail" placeholder="Tu e-mail" name="email" id="email-plan" required>
                             <input type="hidden" name="as" value="<?php printf("%s_%s", $n1, $n2); ?>">
                             <button type="submit">Enviar</button>
-                            <div class="error_plan"><p>Es necesario completar este campo</p></div>
+                            <div class="error_plan"><p>Es necesario completar este campo.</p></div>
                             <div class="icon-error"></div>
                         </form>
                     </div>
-
-                    <div class="newsletter">
-                        <h4>Reciba las promociones</h4>
+                    <div class="icon-chevron-upsletter">
+                        <h4>Recibe las promociones</h4>
                         <?php
                             $n1 = rand(1,10);
                             $n2 = rand(1,10);
                         ?>
                         <form id="promociones" data-sum="<?php printf("¿Cuánto es %s + %s?", $n1, $n2); ?>">
-                            <p>Sólo proporcione su e-mail para mantenerlo al tanto</p>
-                            <input type="text" placeholder="Su nombre" name="name" id="name-promo" required>
-                            <input type="mail" placeholder="Su e-mail" name="email" id="email-promo" required>
+                            <p>Sólo proporciona tu e-mail para mantenerte al tanto</p>
+                            <input type="text" placeholder="Tu nombre" name="name" id="name-promo" required>
+                            <input type="mail" placeholder="Tu e-mail" name="email" id="email-promo" required>
                             <input type="hidden" name="as" value="<?php printf("%s_%s", $n1, $n2); ?>">
                             <button type="submit">Enviar</button>
-                            <div class="error_promo"><p>Es necesario completar este campo</p></div>
+                            <div class="error_promo"><p>Es necesario completar este campo.</p></div>
                         </form>
                     </div>
                     <div class="end">
-                        <a href="#home-locations" class="new"></a>
+                        <a href="#home-plans" class="new"></a>
                     </div>
                 </section>
 <?php
@@ -374,15 +374,15 @@
                         <div class="gmap">
                             <div id="map-canvas"></div>
                             <div class="directions">
-                                <h4>¿Cómo llegar a la funeraria?</h4>
+                                <h4>¿Cómo llegar?</h4>
                                 <form action="#">
-                                    <input type="text" placeholder="Escriba la calle, colonia o delegación de origen" class="from" name="from">
+                                    <input type="text" placeholder="Escribe la calle, colonia o delegación de origen" class="from" name="from">
                                     <button type="submit" class="go"><i class="icon-chevron-right"></i></button>
                                 </form>
                             </div>
                         </div>
                         <div class="end">
-                            <a href="#home-blog"class="new"></a>
+                            <a href="#home-locations"class="new"></a>
                         </div>
                     </div>
                 </section>
@@ -403,8 +403,8 @@
                     <div class="columns" data-d="<?php echo count($myposts); ?>">
                         <?php for($c = 0; $c < count($myposts); $c++): ?>
                         <article class="col<?php print ($c + 1); ?>">
-                            <a href="<?php hurl(); echo $myposts[$c]->post_name; ?>" class="button"><a href="<?php hurl(); echo $myposts[$c]->post_name; ?>" class="button"><img src="<?php echo get_uniq_img_($myposts[$c]->ID, "portada"); ?>" width="290"></a>
-                            <h4><a href="<?php hurl(); echo $myposts[$c]->post_name; ?>" class="button"><?php echo $myposts[$c]->post_title; ?></a></h4>
+                            <img src="<?php echo get_uniq_img_($myposts[$c]->ID, "portada"); ?>" width="290">
+                            <h4><?php echo $myposts[$c]->post_title; ?></h4>
                             <?php echo $myposts[$c]->post_content; ?>
                             <p class="more">
                                 <a href="<?php hurl(); echo $myposts[$c]->post_name; ?>" class="button">Leer más</a>
