@@ -2805,7 +2805,7 @@ body.home .content #sticky-note-addr > span  {
 display:hidden;
 }
 body.home .content .container section {
-  overflow: hidden;
+  overflow: visible;
 }
 /* line 13, ../../app/styles/_home.scss */
 body.home .content section {
@@ -2853,7 +2853,7 @@ body.home .content .end a {
   position: relative;
   display: block;
   margin: 0 auto;
-  height: 31px;
+  height: 32px;
   width: 31px;
   line-height: 22px;
   border: 1px solid #1e2c5e;
@@ -7359,7 +7359,7 @@ body.blog #post #carousel .carousel-controls {
 /* line 44, ../../app/styles/_blog.scss */
 body.blog #post #carousel .carousel-controls a {
   display: inline-block;
-  height: 11px;
+  height: 13px;
   width: 13px;
   margin: 0 3px;
   background-image: url('../images/home/s1-controls.png');
