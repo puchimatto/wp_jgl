@@ -3,6 +3,7 @@
         ?>
         <div class="content">
             <div class="container">
+                <div id="sticky-note-addr"></div>
                 <section>
                     <div id="info">
                         <?php echo $content; ?>

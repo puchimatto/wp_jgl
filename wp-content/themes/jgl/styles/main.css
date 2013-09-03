@@ -2779,14 +2779,10 @@ padding-top: 8px;
 .content .container {
   background-color: white;
 }
-
-/* Home page styles */
-/* line 10, ../../app/styles/_home.scss */
-
-body.home .content .container  {
+.content .container  {
 position: relative;
 } 
-body.home .content #sticky-note-addr  {
+.content #sticky-note-addr  {
 display:none;
 width: 65px;
 height: 173px;
@@ -2795,15 +2791,18 @@ position: absolute;
 top: 90px;
 right: -65px;
 } 
-body.home .content #sticky-note-addr.sticky{
+.content #sticky-note-addr.sticky{
 position: fixed;
 top:90px;
 right:inherit;
 margin-left: 960px;
 }
-body.home .content #sticky-note-addr > span  {
+.content #sticky-note-addr > span  {
 display:hidden;
 }
+
+/* Home page styles */
+/* line 10, ../../app/styles/_home.scss */
 body.home .content .container section {
   overflow: hidden;
 }

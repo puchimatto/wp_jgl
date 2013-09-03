@@ -3,6 +3,7 @@ function pagina_sucursales($contenido, $id){
 ?>
 <div class="content">
             <div class="container">
+                <div id="sticky-note-addr"></div>
                 <section class="section-1 intro" id="maps-intro">
                     <h2>Estamos Cerca de Ti</h2>
                     
