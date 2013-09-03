@@ -9,6 +9,7 @@
         ?>
         <div class="content">
             <div class="container">
+                <div id="sticky-note-addr"></div>
                 <section>
                     <h2>Notas del mundo funerario</h2>
                     <div id="post">
