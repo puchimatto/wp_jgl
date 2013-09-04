@@ -2301,10 +2301,11 @@ html {
 body {
   margin: 0 auto;
   /*background-color:#f5f1f0;*/
-  background-image: url('../images/header/header02.png');
+  background-image: url('../images/header/JGL_HOME_FONDO.jpg');
   font-family: "Georgia"; /*se cambia de Trebuchet MS", Tahoma, sans-serif a Georgia*/
   font-size: 12px; 
-  background-size: cover;
+  /*background-size: cover;*/
+  position: relative;
 }
 
 /* line 20, ../../app/styles/_global.scss */
@@ -2493,9 +2494,9 @@ figure:after {
 /* Header styles */
 /* line 20, ../../app/styles/_header.scss */
 .site-header {
-  background-color: #e1d9ce;
-  background-image: url('../images/header/header02.png');
-  background-position: 0;
+  /*background-color: #e1d9ce;*/
+  /*background-image: url('../images/header/header03.png');*/
+  /*background-position: 0;*/
   background-repeat: no-repeat;
   color: #212f60;
   height: 300px;
@@ -2503,7 +2504,7 @@ figure:after {
   font-size: 0.9em;
   margin-bottom: -141px;
   z-index: 0;
-  background-size: cover;
+  /*background-size: cover;*/
   margin-top:-1%;
 }
 /* line 36, ../../app/styles/_header.scss */
@@ -2620,23 +2621,23 @@ figure:after {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top:-3.5%;
+  margin-top:-5.5%;
   width: 300px;
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-  background-image: url('../images/header/logo-nuevo01.png');
+  background-image: url('../images/header/logo-nuevo03.png');
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  height: 125px;
+  height: 144px;
   position: relative;
-  top: 50px;
+  top: 60px;
 }
 
 /* line 116, ../../app/styles/_header.scss */
 .site-nav {
   position: absolute;
-  top: 159px;
+  /*top: 159px;*/
   left: 0;
   width: 100%;
   z-index: 105;
@@ -2739,8 +2740,9 @@ figure:after {
 }
 /* line 212, ../../app/styles/_header.scss */
 .site-nav .search {
-   padding-left: 5px;
-padding-top: 8px;
+  /*padding: 8px;*/
+  padding-top: 8px;
+  padding-left: 5px;
 }
 /* line 215, ../../app/styles/_header.scss */
 .site-nav .search label {
@@ -2804,7 +2806,7 @@ display:hidden;
 /* Home page styles */
 /* line 10, ../../app/styles/_home.scss */
 body.home .content .container section {
-  overflow: hidden;
+  overflow: visible;
 }
 /* line 13, ../../app/styles/_home.scss */
 body.home .content section {
@@ -2846,13 +2848,24 @@ body.home .content .end {
   background: linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));
   background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));
 }
+body.home .content #first {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  height: 11px;
+  position: absolute;
+  background: none;
+  border-bottom: none;
+  top: -31px;
+  left: 0;
+}
 /* line 53, ../../app/styles/_home.scss */
 body.home .content .end a {
   clear: both;
   position: relative;
   display: block;
   margin: 0 auto;
-  height: 31px;
+  height: 32px;
   width: 31px;
   line-height: 22px;
   border: 1px solid #1e2c5e;
@@ -3068,7 +3081,7 @@ body.home #home-intro .carousel-text div p .button:hover {
 /* line 177, ../../app/styles/_home.scss */
 body.home #home-intro .end {
   position: absolute;
-  bottom: -14px;
+  /*bottom: -14px;*/
 }
 /* line 192, ../../app/styles/_home.scss */
 body.home #home-about .carousel-rotate .stage {
@@ -3257,6 +3270,9 @@ body.home #home-about .carousel-phrase .phrase p:first-child:after {
 /* line 313, ../../app/styles/_home.scss */
 body.home #home-about .carousel-phrase .phrase p.who {
   text-align: right;
+}
+body.home #home-services {
+  overflow: hidden;
 }
 /* line 327, ../../app/styles/_home.scss */
 body.home #home-services .cells {
@@ -6531,6 +6547,7 @@ body.maps .sucursal .details .padding-details h4 {
 body.maps .sucursal .details .padding-details p {
   color: #212f60;
   padding-left: 37px;
+  margin-top:0.1%;
 }
 /* line 111, ../../app/styles/_maps.scss */
 body.maps .sucursal .details + .images {
@@ -7358,7 +7375,7 @@ body.blog #post #carousel .carousel-controls {
 /* line 44, ../../app/styles/_blog.scss */
 body.blog #post #carousel .carousel-controls a {
   display: inline-block;
-  height: 11px;
+  height: 13px;
   width: 13px;
   margin: 0 3px;
   background-image: url('../images/home/s1-controls.png');
@@ -7793,7 +7810,7 @@ body.single .content section .newsletter h3, body.single .content section .newsl
 /* line 164, ../../app/styles/_single.scss */
 body.single .content section .newsletter h3 {
   font-weight: normal;
-  background: url('../images/single/news.gif');
+  background: url('../images/single/NEWSLETTERBCO.png');
   background-repeat: no-repeat;
   background-position: 10px 0px;
   margin-bottom: 0;
@@ -8708,3 +8725,4 @@ body.archive .content .post .text-semblanza .post-content a {
 #ui-datepicker-div{
   z-index: 100 !important;
 }
+
