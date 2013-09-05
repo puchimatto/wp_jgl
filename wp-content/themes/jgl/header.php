@@ -19,6 +19,15 @@
         <script type="text/javascript"> var homeURL = "<?php echo hurl(); ?>"; </script>
         <link rel="stylesheet" href="<?php bloginfo('template_url'); ?>/styles/jquery/jquery-ui.css">
 
+        <script>
+          // 2. This code loads the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+
+          tag.src = "https://www.youtube.com/iframe_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+              </script>
+
     </head>
     <?php ?>
     <body class="home">

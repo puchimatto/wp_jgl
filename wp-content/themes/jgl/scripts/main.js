@@ -171,7 +171,10 @@ var SITE = {
                 $("ul.location-list-li li").eq(a).append("<p>" + $(this).html() + "</p>");
             });
             $("#hidden-locations").remove();
+            
+            
 
+             
             // Initial carousel
             (function($){
                 var panels = $("#home-intro .carousel-bg > div"),
@@ -195,24 +198,8 @@ var SITE = {
                 notPanels = panels.not(".active");
                 notTextPanels = textPanels.not(".active");
                 
-                YTPlayer = function(){
-                    console.log($('#yt-image').data('yt'));
-                    /*
-                    var player = new YT.Player('player', {
-                        height: '497',
-                        width: '795',
-                        videoId: $('yt-image').data('yt'),
-                        events: {
-                            'onReady': onPlayerReady,
-                            'onStateChange': onPlayerStateChange
-                        }
-                    });
-                    function onPlayerReady(event) {
-                        //event.target.playVideo();
-                    }
-                    function onPlayerStateChange(event) {}
-                    */
-                }
+                
+
 
                 slideSwitch = function(dest) {
 
@@ -259,6 +246,11 @@ var SITE = {
                         controls.filter(".active").removeClass("active");
                         controls.eq(dest).addClass("active");
                     //}
+
+                    var videoVisible = $("#youtubevideo").hasClass("active");
+                    if (videoVisible) {                
+                        $(".carousel-text").css("display","none");
+                    }else{ $(".carousel-text").css("display","block");};
                 }
                 
                 intervalo = function( move ){
@@ -293,6 +285,43 @@ var SITE = {
                     }
                 }
                 
+                YTPlayer = function(){
+                    var videoIdentificador = $('#yt-image').data('yt');
+                    console.log(videoIdentificador);
+
+
+                   
+                    var player = new YT.Player('player', {
+                        height: '497',
+                        width: '795',
+                        videoId: videoIdentificador,
+                        events: {
+                             'onStateChange': onPlayerStateChange
+                        }
+                    });
+
+                    function playYtVideo(event) {
+                        player.playVideo();
+ 
+                    }
+                    function onPlayerStateChange(event) {
+                         if (event.data == YT.PlayerState.ENDED || event.data == YT.PlayerState.PAUSED) {
+                                 intervalo( true );
+                            }
+                        if (event.data == YT.PlayerState.PLAYING) {
+                         clearInterval(currentInterval);
+                             }
+                    }
+                  /*   */
+
+                    $("#yt-image").click(function(){
+                        console.log("click!!!");
+                        $("#player").show();
+                        $("#yt-image").hide();
+                        playYtVideo();
+
+                     });
+                }
                 YTPlayer();
                 intervalo( true );
                 

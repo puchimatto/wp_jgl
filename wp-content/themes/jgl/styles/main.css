@@ -2914,6 +2914,11 @@ body.home #home-intro .carousel-controls{
 body.home #home-intro .carousel-text {
   position: absolute;
 }
+body.home #home-intro .carousel-text .textovideo{
+  display: none!important;
+ }
+body.home #home-intro .carousel-text .Carousel{
+ }
 /* line 78, ../../app/styles/_home.scss */
 body.home #home-intro .carousel-controls span.r,
 body.home #home-intro .carousel-text span.r {

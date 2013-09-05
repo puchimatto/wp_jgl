@@ -25,14 +25,21 @@
             endforeach;
             ?>
             <div id="youtubevideo" class="video">
-                <!-- YouTube video <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe>-->
-                <img id="yt-image" src="http://img.youtube.com/vi/QW2AvuWRbfk/mqdefault.jpg" data-yt="QW2AvuWRbfk" />
-                <!-- <div id="player"></div> -->
+                <!-- YouTube video  <iframe width="795" height="497" src="http://www.youtube.com/embed/QW2AvuWRbfk" frameborder="0" allowfullscreen></iframe> -->
+                
+                <img id="yt-image" src="http://img.youtube.com/vi/QW2AvuWRbfk/hqdefault.jpg" data-yt="QW2AvuWRbfk" width="795" height="497" />
+                <!-- -->
+                <div id="player" style="display:none; ">
+                    
+                </div> 
             </div>
         </div>
         <div class="carousel-text">
-            <?php
+
+             <?php
             global $post;
+ 
+
             $id_type = get_cat_ID('Carousel');
             $array_category = array($id_type);
             $args = array('category__and' => $array_category, 'numberposts' => -1, 'order' => 'ASC');
@@ -40,14 +47,16 @@
             $c = 0;
             foreach( $myposts as $post ) :  setup_postdata($post); 
             ?>
-            <div <?php if($c == 0): ?>class="active"<?php endif; ?>>
+
+         
+            <div class=" <?php if($c == 0): ?>active <?php endif; ?>" 
                 <?php the_content(); ?>
-            </div>
+             </div>
             <?php
             $c++;
             endforeach;
             ?>
-            <div class=""></div>
+            <div class="textovideo"> </div>
         </div>
         <div class="end">
             <a href="#home-intro" class="new"></a>
