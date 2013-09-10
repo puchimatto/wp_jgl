@@ -2984,7 +2984,8 @@ body.home #home-intro .carousel-bg {
   position: relative;
   /*top:        ( $home-section-max-height - $home-intro-item-height ) / 2;*/
   top: 43.5px;
-  height: 563px;
+  height: 562px;
+  overflow: hidden;
   width: 100%;
   margin: 0 auto;
 }
