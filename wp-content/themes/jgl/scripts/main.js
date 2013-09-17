@@ -54,7 +54,6 @@ var SITE = {
                     });
                 }
             });
-            //if( $('body').children )
             /*
             if( $("body").hasClass("home") ) {
                 stkntmin = $("#home-about").position().top;
