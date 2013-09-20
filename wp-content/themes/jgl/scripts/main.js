@@ -886,7 +886,7 @@ var SITE = {
                 w.gmap = function() {
                     var start = new google.maps.LatLng( mx.lat, mx.lon ),
                         opts = {
-                            zoom:               12,
+                            zoom:               11, //mapa pagina home
                             mapTypeId:          google.maps.MapTypeId.ROADMAP,
                             mapTypeControl:     false,
                             streetViewControl:  false,
@@ -931,7 +931,7 @@ var SITE = {
 
                             map.setCenter( coords );
                             map.panTo( coords );
-                            map.setZoom( 14 );
+                            map.setZoom( 1 );
 
                             openInfo(_item, coords);
                             $("#photo-map").attr("src", _item.attr("data-img"));
@@ -1777,14 +1777,15 @@ var SITE = {
                 mx.lon = -99.132132;
 
                 w.gmap = function() {
-
+                     var url = "localhost/wp_jgl/";
                     var start = new google.maps.LatLng( mx.lat, mx.lon ),
                         opts = {
-                            zoom:               12,
+                            zoom:               15, //mapa pagina sucursales
                             mapTypeId:          google.maps.MapTypeId.ROADMAP,
                             mapTypeControl:     false,
                             streetViewControl:  false,
                             center:             start,
+                           
                             styles:             mapStyle
                         },
                         myMaps = [];
@@ -1796,16 +1797,34 @@ var SITE = {
                             infoContent.append("<p>" + address + "</p>");
 
                             infowindow.setContent(infoContent[0]);
-                            infowindow.open(mapa);
-                            infowindow.setPosition(pos)
+                            //
+                            infowindow.setPosition(pos);
+
+                            var marker = new google.maps.Marker({
+                              position: pos,
+                              map: mapa,
+                              icon: "http://www.jgarcialopez.com.mx/wp-content/themes/jgl/images/home/s5-marker.png",
+                            });
+
+                            google.maps.event.addListener(marker, 'click', function() {
+                                //mapa.setZoom(8);
+                                infowindow.open(mapa);
+                                mapa.setCenter(marker.getPosition());
+                            });
                         }
+                        
+
                         $(".map_canvas").each(function(e){
                             var par = $(this).parent().parent().parent().find("p.direccion").first();
                             var htitle = $(this).parent().parent().parent().find("h2").first();
 
                             var newMap = new google.maps.Map(document.getElementById("map" + e),opts);
                             myMaps.push(newMap);
-                            openInfo(new google.maps.LatLng(par.attr('data-gmap-lat'), par.attr('data-gmap-long')), newMap, htitle.html(), par.html());
+
+                            //openInfo(new google.maps.LatLng(par.attr('data-gmap-lat'), par.attr('data-gmap-long')), newMap, htitle.html(), par.html());
+ 
+                            openInfo(new google.maps.LatLng(19.430578, -99.154691), newMap, htitle.html(), par.html());
+                             console.log(par.attr('data-gmap-lat'), par.attr('data-gmap-long'));
                         });
 
                         $(".directions form").each(function(e){
